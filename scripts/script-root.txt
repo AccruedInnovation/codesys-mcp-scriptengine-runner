@@ -1,0 +1,4 @@
+# Relative paths are resolved from this file and the DLL.
+# An absolute path is also accepted, for example:
+# D:\Projects\codesys-mcp\trusted-scripts
+user_scripts

@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>AccruedInnovation.CodesysMcp.ScriptRunner</AssemblyName>
+    <RootNamespace>AccruedInnovation.CodesysMcp.ScriptRunner</RootNamespace>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <AssemblyTitle>Accrued Innovation CODESYS MCP Script Runner</AssemblyTitle>
+    <Description>Runtime-loaded MCP tool for executing trusted CODESYS ScriptEngine files</Description>
+    <Company>Accrued Innovation</Company>
+    <Product>Accrued Innovation CODESYS MCP Script Runner</Product>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <PathMap>$(MSBuildProjectDirectory)=/_/src</PathMap>
+    <DebugType>portable</DebugType>
+    <Platforms>AnyCPU</Platforms>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CodesysCommonDir Condition="'$(CodesysCommonDir)' == ''">C:\Program Files\CODESYS 3.5.22.20\CODESYS\Common</CodesysCommonDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="ComponentModel">
+      <HintPath>$(CodesysCommonDir)\ComponentModel.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="DevelopmentSystemMCPServer">
+      <HintPath>$(CodesysCommonDir)\DevelopmentSystemMCPServer.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="ScriptEngine3">
+      <HintPath>$(CodesysCommonDir)\ScriptEngine3.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="MessageStorage">
+      <HintPath>$(CodesysCommonDir)\MessageStorage.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
+
+  <Target Name="ValidateCodesysReferences" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(CodesysCommonDir)\ComponentModel.dll')"
+           Text="ComponentModel.dll was not found. Set CodesysCommonDir to the matching CODESYS Common directory." />
+    <Error Condition="!Exists('$(CodesysCommonDir)\DevelopmentSystemMCPServer.dll')"
+           Text="DevelopmentSystemMCPServer.dll was not found. Install MCP Server 1.1.0.0 and set CodesysCommonDir to the matching CODESYS Common directory." />
+    <Error Condition="!Exists('$(CodesysCommonDir)\ScriptEngine3.dll')"
+           Text="ScriptEngine3.dll was not found. Install CODESYS Scripting and set CodesysCommonDir to the matching CODESYS Common directory." />
+    <Error Condition="!Exists('$(CodesysCommonDir)\MessageStorage.dll')"
+           Text="MessageStorage.dll was not found. Set CodesysCommonDir to the matching CODESYS Common directory." />
+  </Target>
+</Project>

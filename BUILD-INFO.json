@@ -1,0 +1,12 @@
+{
+  "package": "codesys-mcp-script-runner",
+  "version": "1.0.0",
+  "built_utc": "2026-08-11T00:12:23Z",
+  "target_framework": ".NET Framework 4.8",
+  "platform_target": "AnyCPU",
+  "dotnet_sdk": "10.0.302",
+  "codesys_development_system": "3.5.22.20",
+  "codesys_mcp_contract": "1.1.0.0",
+  "script_engine_contract": "4.2.0.0",
+  "runtime_test_status": "Requires live Windows CODESYS; partner_echo already proved the registration route"
+}
